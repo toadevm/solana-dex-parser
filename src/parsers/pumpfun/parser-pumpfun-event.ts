@@ -10,6 +10,9 @@ import {
 import { getInstructionData, getPrevInstructionByIndex, sortByIdx } from '../../utils';
 import { BinaryReader } from '../binary-reader';
 
+// Pumpfun mayhem mode fee recipient
+const MAYHEM_FEE_RECIPIENT = 'GesfTA3X2arioaHp8bbKdjG9vJtskViWACZoYvxp4twS';
+
 export class PumpfunEventParser {
   constructor(private readonly adapter: TransactionAdapter,
     private readonly transferActions: Record<string, TransferData[]>) { }
@@ -124,6 +127,9 @@ export class PumpfunEventParser {
       outputDecimals = 9;
     }
 
+    // Check if this is a mayhem mode trade
+    const isMayhemMode = this.adapter.accountKeys.includes(MAYHEM_FEE_RECIPIENT);
+
     return {
       protocol: DEX_PROGRAMS.PUMP_FUN.name,
       type: evt.isBuy ? 'BUY' : 'SELL',
@@ -143,7 +149,8 @@ export class PumpfunEventParser {
         decimals: outputDecimals,
       },
       fee: evt.fee,
-      creatorFee: evt.creatorFee
+      creatorFee: evt.creatorFee,
+      isMayhemMode
     } as MemeEvent;
   }
 

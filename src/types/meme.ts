@@ -42,5 +42,8 @@ export interface MemeEvent {
   poolAReserve?: number;
   poolBReserve?: number;
   poolFeeRate?: number;
+
+  // Pumpfun-specific fields
+  isMayhemMode?: boolean; // Pumpfun mayhem mode indicator
 }
 

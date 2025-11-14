@@ -22,6 +22,7 @@ export interface PumpswapBuyEvent {
   coinCreator: string;
   coinCreatorFeeBasisPoints: bigint;
   coinCreatorFee: bigint;
+  isMayhemMode: boolean;
 }
 
 export interface PumpswapSellEvent {
@@ -48,6 +49,7 @@ export interface PumpswapSellEvent {
   coinCreator: string;
   coinCreatorFeeBasisPoints: bigint;
   coinCreatorFee: bigint;
+  isMayhemMode: boolean;
 }
 
 export interface PumpswapCreatePoolEvent {

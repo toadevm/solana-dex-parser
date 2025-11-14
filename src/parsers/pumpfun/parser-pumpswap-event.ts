@@ -14,6 +14,9 @@ import {
 import { getInstructionData, sortByIdx } from '../../utils';
 import { BinaryReader } from '../binary-reader';
 
+// Pumpfun mayhem mode fee recipient
+const MAYHEM_FEE_RECIPIENT = 'GesfTA3X2arioaHp8bbKdjG9vJtskViWACZoYvxp4twS';
+
 export class PumpswapEventParser {
   constructor(private readonly adapter: TransactionAdapter) {}
 
@@ -81,7 +84,8 @@ export class PumpswapEventParser {
 
   private decodeBuyEvent(data: Buffer): PumpswapBuyEvent {
     const reader = new BinaryReader(data);
-    return {
+
+    const buyEvent = {
       timestamp: Number(reader.readI64()),
       baseAmountOut: reader.readU64(),
       maxQuoteAmountIn: reader.readU64(),
@@ -105,13 +109,19 @@ export class PumpswapEventParser {
       coinCreator: data.length > 304 ? reader.readPubkey() : '11111111111111111111111111111111',
       coinCreatorFeeBasisPoints: data.length > 304 ? reader.readU64() : 0n,
       coinCreatorFee: data.length > 304 ? reader.readU64() : 0n,
+      isMayhemMode: false,
     };
+
+    // Check if this is a mayhem mode trade
+    buyEvent.isMayhemMode = buyEvent.protocolFeeRecipient === MAYHEM_FEE_RECIPIENT;
+
+    return buyEvent;
   }
 
   private decodeSellEvent(data: Buffer): PumpswapSellEvent {
     const reader = new BinaryReader(data);
 
-    return {
+    const sellEvent = {
       timestamp: Number(reader.readI64()),
       baseAmountIn: reader.readU64(),
       minQuoteAmountOut: reader.readU64(),
@@ -135,7 +145,13 @@ export class PumpswapEventParser {
       coinCreator: data.length > 304 ? reader.readPubkey() : '11111111111111111111111111111111',
       coinCreatorFeeBasisPoints: data.length > 304 ? reader.readU64() : 0n,
       coinCreatorFee: data.length > 304 ? reader.readU64() : 0n,
+      isMayhemMode: false,
     };
+
+    // Check if this is a mayhem mode trade
+    sellEvent.isMayhemMode = sellEvent.protocolFeeRecipient === MAYHEM_FEE_RECIPIENT;
+
+    return sellEvent;
   }
 
   private decodeAddLiquidity(data: Buffer): PumpswapDepositEvent {

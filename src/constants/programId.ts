@@ -371,6 +371,7 @@ export const FEE_ACCOUNTS = [
   '62qc2CNXwrYqQScmEdiZFFAnJR262PxWEuNQtxfafNgV', // PumpfunAMM Fee7
   'JCRGumoE9Qi5BBgULTgdgTLjSgkCMSbF62ZZfGs84JeU', // PumpfunAMM Fee8
   'CebN5WGQ4jvEPvsVU4EoHEpgzq1VV7AbicfhtW4xC9iM', // Pumpfun Fee
+  'GesfTA3X2arioaHp8bbKdjG9vJtskViWACZoYvxp4twS', // Pumpfun Mayhem Fee
 
   'AVUCZyuT35YSuj4RH7fwiyPu82Djn2Hfg7y2ND2XcnZH', // Photon Fee Vault
 

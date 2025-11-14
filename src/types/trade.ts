@@ -154,6 +154,7 @@ export interface TradeInfo {
   amm?: string; // AMM type (e.g., 'RaydiumV4', 'Meteora')
   amms?: string[]; // List of AMMs (if multiple)
   route?: string; // Router or Bot (e.g., 'Jupiter','OKX','BananaGun')
+  isMayhemMode?: boolean; // Pumpfun mayhem mode indicator
   slot: number; // Block slot number
   timestamp: number; // Unix timestamp
   signature: string; // Transaction signature
