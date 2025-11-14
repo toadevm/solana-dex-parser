@@ -203,6 +203,16 @@ export const DEX_PROGRAMS = {
     name: 'Apepro',
     tags: ['bot'],
   },
+  AXIOM: {
+    id: 'BLUR9cL8HqZzu5bSaC7VRX25RCG93Hv3T6NPyKxQhWUT',
+    name: 'Axiom',
+    tags: ['bot'],
+  },
+  PADRE: {
+    id: '9Fox6i7oT8p4qHn76Qj3dks8RRMGsXQyfMSBScA5yVyX',
+    name: 'Padre',
+    tags: ['bot'],
+  },
 
   // Other DEX Protocols
   ALDRIN: {

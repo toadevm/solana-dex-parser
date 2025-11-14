@@ -80,6 +80,8 @@ to support future development. Thanks!
 | **Bloom** | ✅ | Copy trading |
 | **Mintech** | ✅ | Trading bot |
 | **Apepro** | ✅ | Trading bot |
+| **Axiom** | ✅ | Trading aggregator |
+| **Padre** | ✅ | Trading terminal |
 
 ## Installation
 
